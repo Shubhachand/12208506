@@ -1,14 +1,14 @@
 // backend/config/db.js
 
 import mongoose from 'mongoose';
-import { logger } from '../.././loggingMiddleware/logger.js'; // adjust path if needed
+
 
 export const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
-    logger.info(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(`MongoDB Connected: `);
   } catch (error) {
-    logger.fatal('MongoDB connection failed', error.stack);
+    console.log('MongoDB connection failed', error);
     process.exit(1);
   }
 };
